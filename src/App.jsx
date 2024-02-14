@@ -1,3 +1,5 @@
+import FriendsList from "./components/friendsList";
+
 const initialFriends = [
     {
         id: 118836,
@@ -20,7 +22,11 @@ const initialFriends = [
 ];
 
 function App() {
-    return <></>;
+    return (
+        <>
+            <FriendsList />
+        </>
+    );
 }
 
 export default App;
