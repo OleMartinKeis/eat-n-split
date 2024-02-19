@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import Button from "../../button";
 
-function AddFriend() {
+function AddFriend({ onAddFriend }) {
     const [name, setName] = useState("");
-    const [img, setImg] = useState("https://i.pravatar.cc/48");
+    const [image, setImage] = useState("https://i.pravatar.cc/48");
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (!name || !img) return;
+        if (!name || !image) return;
         const id = crypto.randomUUID();
         const newFriend = {
             name,
-            img: `${img}?=${id}`,
+            image: `${image}?=${id}`,
             balance: 0,
             id,
         };
-        console.log(newFriend);
+        onAddFriend(newFriend);
         setName("");
-        setImg("https://i.pravatar.cc/48");
+        setImage("https://i.pravatar.cc/48");
     }
 
     return (
@@ -32,9 +32,9 @@ function AddFriend() {
                 />
                 <label>🖼️ Image URL</label>
                 <input
-                    type="text"
-                    value={img}
-                    onChange={(e) => setImg(e.target.value)}
+                    type="url"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
                 />
                 <Button>Add</Button>
             </form>
