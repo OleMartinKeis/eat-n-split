@@ -40,8 +40,12 @@ function App() {
         setShowAddFriend(false);
     }
 
-    function handleSelectetion(friend) {
-        setSelectedFriend(friend);
+    function handleSelecetion(friend) {
+        // setSelectedFriend(friend);
+        setSelectedFriend((selected) =>
+            selected?.id === friend.id ? null : friend
+        );
+        setShowAddFriend(false);
     }
 
     return (
@@ -49,7 +53,8 @@ function App() {
             <div className="sidebar">
                 <FriendsList
                     friends={friends}
-                    onSelection={handleSelectetion}
+                    onSelection={handleSelecetion}
+                    selectedFriend={selectedFriend}
                 />
                 {showAddFriend && <AddFriend onAddFriend={handleAddFriend} />}
                 <Button onClick={handleShowAddFriend}>
