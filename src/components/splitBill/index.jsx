@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "../button";
 
-function SplitBill({ selectedFriend }) {
+function SplitBill({ selectedFriend, onSplitBill }) {
     const [bill, setBill] = useState("");
     const [paidByUser, setPaidByUser] = useState("");
     const paidByFriend = bill ? bill - paidByUser : "";
@@ -11,6 +11,7 @@ function SplitBill({ selectedFriend }) {
         e.preventDefault();
 
         if (!bill || !paidByUser) return;
+        onSplitBill();
     }
 
     return (
