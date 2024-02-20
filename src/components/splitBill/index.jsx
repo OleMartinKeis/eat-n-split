@@ -11,7 +11,7 @@ function SplitBill({ selectedFriend, onSplitBill }) {
         e.preventDefault();
 
         if (!bill || !paidByUser) return;
-        onSplitBill();
+        onSplitBill(whoIsPaying === "user" ? paidByFriend : -paidByUser);
     }
 
     return (
