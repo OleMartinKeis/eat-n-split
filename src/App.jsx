@@ -41,7 +41,6 @@ function App() {
     }
 
     function handleSelecetion(friend) {
-        // setSelectedFriend(friend);
         setSelectedFriend((selected) =>
             selected?.id === friend.id ? null : friend
         );
@@ -77,6 +76,7 @@ function App() {
                 <SplitBill
                     selectedFriend={selectedFriend}
                     onSplitBill={handleSplitBill}
+                    key={selectedFriend.id}
                 />
             )}
         </div>
